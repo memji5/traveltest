@@ -1,0 +1,56 @@
+saludos.
+
+Observaciones.
+en el archivo init/Bootstrap.groovy se encuentra guardada un pequeña inicialización. Nota(para ejecutarlo posteriormente habrá que comentar las líneas, de lo contrario marcara error de campo único, solo servirá para la primera vez).
+
+dicho script agrega a un super usuario con roles de administrador, el usuario es (me) y el password (pass) Nota: en caso de ejecutarlo de nueva cuenta se tiene que comentar dicho script en bootstrap.grooby
+
+en el archivo config/application.yml una vez ejecutado el programa por primera vez, habrá que cambiar dbCreate: create-drop localizado en los parametros para el ambiente de desarrollo a dbCreate: update o en su caso a dbCreate: validate, para que cada que se ejecute el programa no se borren los datos de la base de datos.
+
+la ruta en base de datos es localhost/travel en caso de problemas de permisos habrá que modificar el archivo application.yml con los parámetros para data source de nuestro servidor de pruebas. 
+------------
+Ejemplo:
+username: root
+password: t3mp0r4l
+url: jdbc:mysql://localhost/travel
+------------
+la url de la base de datos solo esta configurada para ambiente de desarrollo, si se crea el deploy para producción se tiene que modificar el data source del ambiente de producción. En el mismo archivo application.yml
+
+el demo es muy sencillo
+cuenta con una interfaz responsiva.
+opciones basicas como  agregar, listar y visualizar.
+------------------------------------------------------------
+Litado por filtro: corresponde a una búsqueda con todos los usuarios y al área del negocio que esta asignado(sobre la tabla se encuentra un combo el cual cuanta con 3 tipos de búsqueda por nombre completo, área de negocio y la otra es sin patrón de búsqueda)
+
+colaboradores: menú que permite agregar a un nuevo colaborador, así como asignarle el rol que se le asignara, y el listado de colaboradores
+
+áreas de negocio: agregar nueva área de negocio, así como listar las existentes cuenta con restricciones en listado para que solo alguien con rol de admin pueda editar y eliminar.
+
+
+
+tecnologias utilizadas
+
+Grails, version 3.2.6
+Bootstrap
+Jquery
+springSecurity
+Javascript
+* lib
+	compile 'org.grails.plugins:spring-security-core:3.1.1'
+    runtime 'mysql:mysql-connector-java:5.1.29'
+    compile fileTree(dir: 'lib', include: '*.jar')
+
+
+
+para poder ejecutarlo solo se requiere
+
+java 1.7 o superior 
+grails 3.2.6
+mysql 5 o superior
+
+
+ejecutar en consola grails run-app 
+o como una aplicacion de gradle
+
+listo!!!!!!!
+
